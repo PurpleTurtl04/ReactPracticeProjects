@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+
+const shoppingList = [
+  {
+    id: 1,
+    name: "Banana",
+    quantity: 8,
+    complete: false,
+  },
+  {
+    id: 2,
+    name: "Mangos",
+    quantity: 2,
+    complete: false,
+  },
+  {
+    id: 3,
+    name: "Bread",
+    quantity: 1,
+    complete: false,
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container">
+        <h1>Shopping List</h1>
+        <div>
+          <ul>
+            {shoppingList.map((item) => (
+              <li>
+                {item.name} ({item.quantity})
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
