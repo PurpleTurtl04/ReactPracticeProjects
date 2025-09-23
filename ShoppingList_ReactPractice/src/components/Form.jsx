@@ -24,7 +24,7 @@ export default function Form({ onAddItem }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <h3>What do you need?</h3>
       <input
         type="text"

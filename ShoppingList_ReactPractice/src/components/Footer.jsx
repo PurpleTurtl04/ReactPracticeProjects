@@ -4,7 +4,7 @@ export default function Footer({ shoppingList }) {
   const percentage = Math.round((picked / total) * 100);
 
   return (
-    <footer>
+    <footer className="footer">
       Total {total} Picked {picked} {percentage}%
     </footer>
   );
