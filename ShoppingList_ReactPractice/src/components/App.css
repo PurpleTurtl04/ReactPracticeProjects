@@ -18,3 +18,7 @@ th {
   text-align: left;
   padding: 8px;
 }
+
+.picked {
+  text-decoration: line-through;
+}

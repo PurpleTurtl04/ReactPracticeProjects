@@ -1,7 +1,15 @@
-export default function Item({ item }) {
+export default function Item({ item, onDeleteItem, onPickedItem }) {
   return (
-    <li>
-      {item.name} ({item.quantity})
+    <li className={`item ${item.picked ? "picked" : ""}`}>
+      <input
+        type="checkbox"
+        name="picked"
+        id="picked"
+        checked={item.picked}
+        onClick={() => onPickedItem(item.id)}
+      />
+      {item.name} ({item.quantity}){" "}
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }

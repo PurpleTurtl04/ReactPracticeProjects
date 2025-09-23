@@ -33,12 +33,28 @@ export default function App() {
     setShoppingList((list) => [...list, item]);
   }
 
+  function handlePickedItem(id) {
+    setShoppingList((list) =>
+      list.map((item) =>
+        item.id === id ? { ...item, picked: !item.picked } : item
+      )
+    );
+  }
+
+  function handleDeleteItem(id) {
+    setShoppingList((list) => list.filter((item) => item.id !== id));
+  }
+
   return (
     <>
       <div className="container">
         <Header />
         <Form onAddItem={handleAddItem} />
-        <ShoppingList shoppingList={shoppingList} />
+        <ShoppingList
+          shoppingList={shoppingList}
+          onPickedItem={handlePickedItem}
+          onDeleteItem={handleDeleteItem}
+        />
         <Footer shoppingList={shoppingList} />
       </div>
     </>
