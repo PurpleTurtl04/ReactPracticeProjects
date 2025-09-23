@@ -47,16 +47,16 @@ export default function App() {
 
   return (
     <>
+      <Header />
       <div className="container">
-        <Header />
         <Form onAddItem={handleAddItem} />
         <ShoppingList
           shoppingList={shoppingList}
           onPickedItem={handlePickedItem}
           onDeleteItem={handleDeleteItem}
         />
-        <Footer shoppingList={shoppingList} />
       </div>
+      <Footer shoppingList={shoppingList} />
     </>
   );
 }

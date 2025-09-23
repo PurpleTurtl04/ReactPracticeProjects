@@ -9,7 +9,9 @@ export default function Item({ item, onDeleteItem, onPickedItem }) {
         onClick={() => onPickedItem(item.id)}
       />
       {item.name} ({item.quantity}){" "}
-      <button onClick={() => onDeleteItem(item.id)}>❌</button>
+      <button className="deleteButton" onClick={() => onDeleteItem(item.id)}>
+        ❌
+      </button>
     </li>
   );
 }

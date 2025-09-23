@@ -1,10 +1,7 @@
 body {
-  max-width: 1280px;
-  margin: 0 auto;
-  /* padding: 2rem; */
+  margin: 0;
   color: rgba(255, 255, 255, 0.87);
   background-color: #0e1820;
-  /* text-align: center; */
 }
 
 .title {
@@ -15,22 +12,45 @@ body {
   padding: 2rem;
 }
 
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   text-align: center;
+  font-size: 2rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form h3 {
+  margin: 0 1rem;
+}
+
+.shoppingList ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 0;
+}
+
+.shoppingList .item {
+  list-style-type: none;
+  flex: 0 0 33%;
   font-size: 1.5rem;
-  background-color: #c1906e;
+  margin: 0.5rem 0;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.shoppingList .deleteButton {
+  background: transparent;
+  border: none;
 }
 
 .picked {
@@ -38,5 +58,12 @@ th {
 }
 
 .footer {
-  background-color: #86c2eb;
+  background-color: #c1906e;
+  padding: 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
 }

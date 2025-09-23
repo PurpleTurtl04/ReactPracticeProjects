@@ -5,7 +5,12 @@ export default function Footer({ shoppingList }) {
 
   return (
     <footer className="footer">
-      Total {total} Picked {picked} {percentage}%
+      {picked === total
+        ? "All Done ✅"
+        : `You have picked up ${picked} ${
+            picked === 1 ? "item" : "items"
+          } out of the${" "}
+      ${total} on your list (${percentage}%)`}
     </footer>
   );
 }
