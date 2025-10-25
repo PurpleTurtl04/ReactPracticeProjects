@@ -5,7 +5,6 @@ export default function SearchBar() {
       name="searchBar"
       id="searchBar"
       placeholder="search for a pokemon"
-      onkeyup="countChars(this);"
     />
   );
 }
