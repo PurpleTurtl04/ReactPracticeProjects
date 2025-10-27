@@ -1,4 +1,5 @@
-export default function Counters({ displayedPokemon }) {
+export default function Counters({ pokemon }) {
+  const displayedPokemon = pokemon.length;
   return (
     <div id="counters">
       <p id="charNum">Characters: 0</p>

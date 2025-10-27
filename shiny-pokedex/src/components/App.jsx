@@ -7,23 +7,20 @@ import SearchBar from "./SearchBar";
 import PokedexContainer from "./PokedexContainer";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemonList, setPokemonList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  //   const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
+  const [pokemon, setPokemon] = useState([]);
 
-  const displayedPokemon = pokemon.length;
-
-  //   const searchedPokemon = pokemon.filter
-
+  // Call API
   useEffect(() => {
-    // Define an async function inside useEffect
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=51`
-        ); // Replace with your API endpoint
+          `https://pokeapi.co/api/v2/pokemon?limit=905`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -35,29 +32,38 @@ function App() {
             index + 1
           }.png`,
         }));
-        setPokemon(list);
+        setPokemonList(list);
       } catch (err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     };
-
-    // Call the async function
     fetchData();
+  }, []);
 
-    // Optional: Cleanup function for aborting fetch requests (important for preventing memory leaks)
-    // const abortController = new AbortController();
-    // fetch('https://api.example.com/data', { signal: abortController.signal });
-    // return () => abortController.abort();
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  // Filter Pokemon
+  useEffect(() => {
+    if (search.length > 0) {
+      setPokemon(
+        pokemonList.filter(
+          (pokemon) =>
+            pokemon.id.toString().includes(search) ||
+            pokemon.name.includes(search)
+        )
+      );
+    } else {
+      setPokemon(pokemonList);
+    }
+  }, [pokemonList, search]);
+
   return (
     <>
       <div className="container">
         <h1>Shiny Pokedex</h1>
       </div>
-      <SearchBar />
-      <Counters displayedPokemon={displayedPokemon} />
+      <SearchBar search={search} onSetSearch={setSearch} />
+      <Counters pokemon={pokemon} />
       <BackToTop />
       {loading && !error && <div className="loading">Loading...</div>}
       {!loading && error && <div className="error">Error: {error.message}</div>}
